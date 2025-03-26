@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> modifiedMatrix(vector<vector<int>>& matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+
+        for(int i=0; i<n; i++){
+            vector< int>v;
+            int maxVal = 0;
+            for(int j=0; j<m; j++){
+                if( matrix[j][i] == -1){
+                   v.push_back(j);
+                   }
+                   else{
+                    maxVal = max(maxVal, matrix[j][i]);
+                   }
+            }
+              for(int j=0; j<v.size(); j++){
+                  matrix[v[j]][i] = maxVal;
+                }
+            
+        }
+        return matrix;
+    }
+};
