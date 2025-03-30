@@ -1,0 +1,42 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> matrix(n, vector<int>(n, 0));
+        int ten = n * n;
+        int minRow = 0, maxRow = n - 1;
+        int minCol = 0, maxCol = n - 1;
+        int count = 0;
+
+        while (minRow <= maxRow && minCol <= maxCol) {
+            // Right
+            for (int j = minCol; j <= maxCol && count < ten; j++) {
+                matrix[minRow][j] = count + 1;
+                count++;
+            }
+            minRow++;
+
+            // Down
+            for (int i = minRow; i <= maxRow && count < ten; i++) {
+                matrix[i][maxCol] = count + 1;
+                count++;
+            }
+            maxCol--;
+
+            // Left
+            for (int j = maxCol; j >= minCol && count < ten; j--) {
+                matrix[maxRow][j] = count + 1;
+                count++;
+            }
+            maxRow--;
+
+            // Up
+            for (int i = maxRow; i >= minRow && count < ten; i--) {
+                matrix[i][minCol] = count + 1;
+                count++;
+            }
+            minCol++;
+        }
+
+        return matrix;
+    }
+};
