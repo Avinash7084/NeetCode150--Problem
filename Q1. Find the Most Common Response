@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string findCommonResponse(vector<vector<string>>& responses) {
+      
+       unordered_map<string,int>m;
+        
+       for(auto group:responses){
+            unordered_set<string>s(group.begin(),group.end());
+            for(auto repit:s){
+                
+                   m[repit]++;
+                   
+            }
+       }
+        vector<string> s;
+        int max_count = 0;
+        for(auto str : m){
+            if(str.second > max_count){
+                max_count = str.second;
+               
+            }
+        }
+        for(auto str:m){
+            if(max_count == str.second){
+                s.push_back(str.first);
+            }
+        }
+        sort(s.begin(),s.end());
+        
+        return s[0];
+    }
+};
