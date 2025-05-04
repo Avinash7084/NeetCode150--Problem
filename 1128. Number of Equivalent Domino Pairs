@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int numEquivDominoPairs(vector<vector<int>>& dominoes) {
+        unordered_map<int,int>count;
+        int result = 0;
+
+        for(auto p:dominoes){
+            int a = min(p[0],p[1]);
+            int b = max(p[0],p[1]);
+            int key = a*10 + b;
+            result += count[key];
+            count[key]++;
+        }
+        return result;
+    }
+};
