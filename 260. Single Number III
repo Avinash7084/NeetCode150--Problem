@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        unordered_map<int,int> m;
+         for(int num : nums){
+            m[num]++;
+        }
+        vector<int> v;
+        for(auto ele : m){
+            if(ele.second == 1){
+                v.push_back(ele.first);
+            }
+        }
+        return v;
+    }
+};
