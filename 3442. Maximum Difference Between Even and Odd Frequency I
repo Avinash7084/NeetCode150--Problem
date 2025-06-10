@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maxDifference(string s) {
+        int n = s.size();
+        unordered_map<char,int>m;
+        for(char i=0; i<n; i++){
+            m[s[i]]++;
+        }
+        int Fmax = 0;
+        int Smax = INT_MAX;
+        for(auto ele:m){
+            
+            if(ele.second%2 != 0){
+                Fmax = max(Fmax,ele.second);
+            }
+            else{
+                Smax = min(Smax,ele.second);
+            }
+        }
+        int diff = Fmax-Smax;
+        return diff;
+    }
+};
