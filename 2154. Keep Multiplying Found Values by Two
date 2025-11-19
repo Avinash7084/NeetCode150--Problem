@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int findFinalValue(vector<int>& nums, int orig) {
+        sort(nums.begin(),nums.end());
+        unordered_set<int>m;
+        int valu = 0;
+        bool bol = false;
+        for(auto ele:nums){
+            if(orig == ele || valu == ele){
+                valu = ele*2;
+                bol = true;
+            }
+        
+        }
+        if(bol == false){
+            return orig;
+        }
+        return valu;
+    }
+};
